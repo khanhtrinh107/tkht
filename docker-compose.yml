@@ -1,19 +1,37 @@
 version: '3'
 services:
-  mysql:
+  mysqldb:
+    container_name: mysqldb
     image: mysql:latest
     restart: always
     ports:
       - 3307:3306
     environment:
       MYSQL_ROOT_PASSWORD: 123456
-      MYSQL_DATABASE: test
+      MYSQL_DATABASE: tkht
       MYSQL_USER: khanhtrinh2401
       MYSQL_PASSWORD: 123456
+    networks:
+      - my-network
+    volumes:
+      - mysqlvol:/var/lib/mysql
   spring-boot:
-    build: .
+    image: spring-boot
     restart: always
     ports:
       - 8080:8080
+    networks:
+      - my-network
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3306/tkht?autoReconnect=true&allowPublicKeyRetrieval=true&useSSL=false
+      - MYSQL_USER:khanhtrinh2401
+      - MYSQL_PASSWORD:123456
+    depends_on:
+      - mysqldb
 
+networks:
+  my-network:
+    driver: bridge
 
+volumes:
+  mysqlvol:
