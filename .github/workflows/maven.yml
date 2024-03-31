@@ -2,22 +2,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
-    services:
-      mysqldb:
-        container_name: mysqldb
-        image: mysql:latest
-        restart: always
-        ports:
-          - 3307:3306
-        environment:
-          MYSQL_ROOT_PASSWORD: 123456
-          MYSQL_DATABASE: tkht
-          MYSQL_USER: khanhtrinh2401
-          MYSQL_PASSWORD: 123456
-        networks:
-          - my-network
-
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 11
