@@ -1,3 +1,3 @@
 FROM openjdk:11
-ADD target/springboot-mysql-docker.jar springboot-mysql-docker.jar
-ENTRYPOINT ["java" ,"-jar" , "springboot-mysql-docker.jar"]
+ADD target/tkht-cicd.jar tkht-cicd.jar
+ENTRYPOINT ["java" ,"-jar" , "tkht-cicd.jar"]
