@@ -17,7 +17,6 @@ services:
       - mysqlvol:/var/lib/mysql
   spring-boot:
     build: ./
-#    image: spring-boot
     restart: always
     ports:
       - 8080:8080
