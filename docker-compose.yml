@@ -16,8 +16,7 @@ services:
     volumes:
       - mysqlvol:/var/lib/mysql
   spring-boot:
-    build: ./
-#    image: spring-boot
+    image: khanhtrinh2401/tkht-cicd
     restart: always
     ports:
       - 8080:8080
